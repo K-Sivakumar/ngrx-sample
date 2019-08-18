@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs';
-import { timer } from 'rxjs/operators';
 
 @Injectable()
 export class TodosService {
@@ -18,6 +17,6 @@ export class TodosService {
       }
     ];
 
-    return Observable.timer(1000).mapTo(todos);
+    return Observable.create(todos);
   }
 }

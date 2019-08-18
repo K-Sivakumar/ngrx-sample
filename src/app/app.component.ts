@@ -12,7 +12,7 @@ export class AppComponent {
   todos: Observable<any>;
 
   constructor(private _store: Store<any>) {
-    this._store.dispath(getTodos());
+    this._store.dispatch(getTodos());
     this.todos = _store.select("todos");
   }
 }

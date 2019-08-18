@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { StoreModule, EffectsModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +8,7 @@ import { TodoComponent } from './todos/todo/todo.component';
 import { TodosComponent } from './todos/todos.component';
 import { todos } from './state/reducer/todos.reducer';
 import { TodosEffect } from './state/effect/todos.effect';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
 
@@ -19,8 +20,8 @@ import { TodosEffect } from './state/effect/todos.effect';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.provideStore({todos}),
-    EffectsModule.run(TodosEffect)
+    StoreModule.forRoot({todos}),
+    EffectsModule.forRoot([TodosEffect])
   ],
   providers: [],
   bootstrap: [AppComponent]
