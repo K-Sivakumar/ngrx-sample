@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { getTodos } from './state/action/todo.action';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngrx-sample';
+  todos: Observable<any>;
+
+  constructor(private _store: Store<any>) {
+    this._store.dispath(getTodos());
+    this.todos = _store.select("todos");
+  }
 }
